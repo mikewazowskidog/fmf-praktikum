@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{xifthen}
+\usepackage{xcolor}
+\newcommand{\mymacro}{this is the content of my macro!}
+\newcommand{\macrowithArgs}[2]{applied to #1 and #2!}
+\newcommand{\macrowitheDefault}[2][TheDefault]{the default is #1, the other arg is #2}
+\newcommand{\numN}{\mathbb{N}}
+\newcommand{\numR}{\mathbb{R}}
+\newcommand{\numC}{\mathbb{C}}
+\newcommand{\cont}[1][N]{\mathcal{C}(#1)}
+\newcommand{\contOn}[1]{\mathcal{C}(#1)}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\contDef}[1][{}]{\cont{}#1}
+\newcommand{\smartCont}[1][{}]{\cont{}\ifthenelse{\equal{#1}{}}{}} 
+\newcommand{\cmd}[1]{\color{blue}\textbackslash{#1}}
+\begin{document}
+
+\mymacro{}  \mymacro{}  \mymacro{}\par
+\macrowithArgs{\mymacro}{42}\par
+\macrowitheDefault{\emph{not the default}}\par
+
+\macrowitheDefault[\textbf{overriden by this argument}]%
+{\emph{not the default}}
+
+\begin{enumerate}
+\item Number systems: $\numN, \numR, \numC$
+\item Continuous functions: $\cont{}$
+\item Domain of continuous functions: $\contOn{\numR^2}$
+\item Formatting arguments into vectors: $\vect{x}$
+\item function cont turned into optional arg: $\cont[\numR]$
+\item Smart Continuous: $\smartCont{}$, $\smartCont[\numC]$
+\item Colouring text with cmd function: \cmd{cont}
+\end{enumerate}
+
+\end{document}
