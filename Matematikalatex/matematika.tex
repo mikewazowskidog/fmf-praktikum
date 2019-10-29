@@ -82,38 +82,71 @@ x(t)=\int_1^t{\frac{\sin{u}}{u^2}}du \qquad y(t)=\int{\frac{\cos{u}}{u^2}du}
 \]
 Izračunaj dolžino poti od točke $x=0$ do točke, v kateri je tangenta prvič navpična.
 
-\item Naj bo $\sum_{n=1}^{\infty} {a_n}$ absolutno konvergentna vrsta in $a_n\ne 1$ za $n \in \R$.
+\item Naj bo $\sum_{n=1}^{\infty} {a_n}$ absolutno konvergentna vrsta in $a_n \ne 1$ za $n \in \mathbb{R}$.
 Dokaži, da sta vrsti
-??
+\[
+\sum^{\infty}_{n=1}{\frac{a_n}{1+a_n}}\qquad \text{in} \qquad \sum^{\infty}_{n=1}{\frac{a^2_n}{1+a^2_n}}   
+\]
 absolutno konvergentni.
 
-\item Funkcijsko zaporedje ?? enakomerno konvergira na ?? proti funkciji ??.
-Naj bo ?? zvezna. Dokaži, da funkcijsko zaporedje ??
-enakomerno konvergina na ?? in določi njegovo limitno funkcijo.
+\item Funkcijsko zaporedje $f_n:[a,b]\rightarrow [c,d]$ enakomerno konvergira na $[a,b]$ proti funkciji $f$.
+Naj bo $g:[c,d]\rightarrow \mathbb{R}$ zvezna. Dokaži, da funkcijsko zaporedje $g\circ f_n$
+enakomerno konvergina na $[a,b]$ in določi njegovo limitno funkcijo.
 
 \item Izračunaj limito zaporedja
-??
+\[
+\lim_{n\rightarrow \infty}{\frac{\sqrt[3]{n^2+n-1}+\sqrt[3]{n}+n^2}{2n^2+\sqrt{n}+1}}    
+\]
 
 \item Izračunaj
-??
-
+\[
+\begin{matrix}
+1 & 2 & 3 & 4 & 5 & 6 \\ 
+4 & 5 & 2 & 6 & 3 & 1 \\ 
+\end{matrix}
+\]
 \item Poenostavi
-??
+\[
+\frac{\frac{3+i}{2-2i}+\frac{7i}{1-i}}{1+\frac{i-1}{4}-\frac{5}{2-3i}}    
+\]
 
 \item Za dani zaporedji preveri, ali sta konvergentni
-??
+\[
+    a_n=\underbrace{\sqrt{2+\sqrt{2+\cdots+\sqrt{2}}}}_{n \text{ korenov}}\qquad b_n=\underbrace{\sin{(\sin{(\dots(\sin{1})\dots)})}}_{n \text{  sinusov}}
+\]
 
 \item Ugotovi, ali obstaja
-??
-Pomagaj si z limitama funkcije ?? v ?? in ??.
+\[
+\lim_{y\rightarrow 0}{y \left( \frac{y+1}{y}-\sqrt{\frac{y^2+1}{y^2}}\right)}    
+\]
+Pomagaj si z limitama funkcije $\frac{x+1-\sqrt{x^2 +1}}{x}$ v $-\infty$ in $\infty$.
 
-\item Izračunaj naslednjo determinanto ??, ki ima na neoznačenih mestih ničle.
-??
+\item Izračunaj naslednjo determinanto $2n\times 2n$, ki ima na neoznačenih mestih ničle.
+\[
+\begin{vmatrix}
+1 & & & & 1 & & & & & \\
+& 2 & & & 2 & & & & & \\
+& & \ddots & & \vdots & & & & & \\
+& & & n-1 & n-1 & & & & & \\
+1 & 2 & \cdots & n-1 & n & n+1 & n+2 & \cdots & 2n \\
+& & & & n+1 & n+1 & & & & \\
+& & & & n+2 & & n+2 & & \\
+& & & & \vdots & & & \ddots & \\
+& & & & 2n & & & & 2n & \\
+
+\end{vmatrix}
+\]
 
 \item Dana je funkcija
-??
-Določi parameter ?? tako, da bo ?? zvezna.
-Izračunaj parcialna odvoda ?? in ?? za ??.
+\[
+ f(x,y)=
+ \begin{cases}
+    \frac{3x^2y-y^3}{x^2+y^2}; & (x,y)\ne (0,0) \\
+    a; \quad & (x,y)=(0,0)
+ \end{cases}
+\]
+Določi parameter $a$ tako, da bo $f$ zvezna.
+Izračunaj parcialna odvoda $f_x(x,y)$ in $f_y(x,y)$ za $(x,y)\ne(0,0)$.
 Izračunaj parcialna odvoda ?? in ??.
 Če obstaja, izračunaj limito
 ??
