@@ -1,0 +1,224 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovene]{babel}
+\usepackage{lmodern}
+
+\usepackage{array}
+
+\usetheme{Berlin}
+\usecolortheme{default}
+\beamertemplatenavigationsymbolsempty
+\useinnertheme[shadows]{rounded}
+\useoutertheme{infolines}
+
+\usepackage{palatino}
+\usefonttheme{serif}
+
+\newtheorem{definicija}{Definicija}
+\newtheorem{izrek}{Izrek}
+
+\begin{document}
+
+% ===================================================================
+
+\title{Priprava prosojnic v LaTeX-u}
+\subtitle{Uporaba paketa beamer}
+\author{Mihael Jošua Vlaisavljevič}
+\institute{FMF Fakulteta za matematiko in fiziko}
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Kratek pregled}
+\tableofcontents[pausesections]
+   \end{frame}
+% ===================================================================
+
+\section{Razporeditev vsebine}
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Naštevanje}
+   Za naštevanje lahko uporabimo okolje itemize:
+      Prva točka.
+      Druga točka.
+      Tretja točka.
+   ali pa okolje enumerate:
+      Prva točka.
+      Druga točka.
+      Tretja točka.
+   \end{frame}
+% -------------------------------------------------------------------
+
+   \begin{frame}{Bloki z naslovom}
+   Dele besedila lahko zapišemo v bloke.
+   Uporabimo okolja \texttt{block}, \texttt{exampleblock}, \texttt{alertblock}.
+   Za parameter okolja napišemo naslov bloka.
+   \begin{block}{Opomba}
+      Tako je videti block z naslovom.
+   \end{block}
+   \begin{exampleblock}{Primer}
+      Tako je videti exampleblock z naslovom.
+   \end{exampleblock}
+   \begin{alertblock}{Opozorilo}
+      Tako je videti alertblock z naslovom.
+   \end{alertblock}
+\end{frame}
+% -------------------------------------------------------------------
+
+   Bloki brez naslova
+   Blok lahko ima tudi prazen naslov.
+   V takem primeru bo brez naslovne vrstice.
+      Tako je videti block s praznim naslovom.
+      Tako je videti exampleblock s praznim naslovom.
+      Tako je videti alertblock s praznim naslovom.
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Stolpci}
+   \begin{columns}[t]
+      \begin{column}{0.5\textwidth}
+         \begin{itemize}
+        \item Besedilo lahko pišemo v več stolpcih.
+        \item Osnovno okolje je columns.
+        \item Posamezen stolpec opišemo v okolju column.
+        \item Vsebina stolpca je lahko poljubna.
+        \item Za primer imamo v desnem stolpcu napis v bloku in sliko sončnice.
+       \end{itemize}
+      \end{column}
+      \end{columns}
+      
+      \begin{column}{0.5\textwidth}
+         \centering
+      \begin{exampleblock}{}
+         \centering
+         Slika v stolpcu.
+      \end{exampleblock}
+      \includegraphics{soncnica.jpg}
+      \end{column}
+   \end{columns}
+\end{frame}{Stolpci}
+      Besedilo lahko pišemo v več stolpcih.
+            Osnovno okolje je columns.
+            Posamezen stolpec opišemo v okolju column.
+            Vsebina stolpca je lahko poljubna.
+            Za primer imamo v desnem stolpcu napis v bloku in sliko sončnice.
+            Slika v stolpcu.
+
+% ===================================================================
+
+\section{Matematične trditve}
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Praštevila}
+      \begin{definicija}
+      Praštevilo je naravno število, ki ima natanko dva delitelja.
+      \end{definicija}
+      \begin{exampleblock}{Zgledi}
+         1 je praštevilo (ima samo enega delitelja: 1).
+         2 je praštevilo (ima dva delitelja: 1 in 2).
+         3 je praštevilo (ima dva delitelja: 1 in 3).
+         4 ni praštevilo (ima tri delitelje: 1, 2 in 4).
+      \end{exampleblock}
+   \end{frame}
+% -------------------------------------------------------------------
+
+   \begin{frame}{Praštevila}
+      \begin{izrek}
+         Praštevil je neskončno mnogo.
+      \end{izrek}
+\begin{exampleblock}
+         Denimo, da je praštevil končno mnogo.
+         Naj bo p največje praštevilo.
+         Naj bo q produkt števil 1, 2, ??, p.
+         Število q+1 ni deljivo z nobenim praštevilom, torej je q+1 praštevilo.
+         To je protislovje, saj je q+1>p.
+         \end{exampleblock}
+      
+      \end{frame}
+% ===================================================================
+
+\section{Postopno odkrivanje vsebine}
+
+% -------------------------------------------------------------------
+\begin{frame}{Konstrukcija pravokotnice na premico p skozi točko T}
+   \begin{columns}[c]
+      \begin{column}{0.55\textwidth}
+         \begin{itemize}
+            \item <1->Dani sta premica p in točka T.
+            \item <2->Nariši lok k s središčem v T.
+            \item <3->Premico p seče v točkah A in B.
+            \item <4->Nariši lok m s središčem v A.
+            \item <5->Nariši lok n s središčem v B in z enakim polmerom.
+            \item <6->Loka se sečeta v točki C.
+            \item <7->Premica skozi točki T in C je pravokotna na p.
+       \end{itemize}
+      \end{column}
+      \end{columns}
+      
+      \begin{column}{0.45\textwidth}
+         \centering
+      \includegraphics<1>[width=50mm]{pic1.jpg}
+      \includegraphics<2>[width=50mm]{pic2.jpg}
+      \includegraphics<3>[width=50mm]{pic3.jpg}
+      \includegraphics<4>[width=50mm]{pic4.jpg}
+      \includegraphics<5>[width=50mm]{pic5.jpg}
+      \includegraphics<6>[width=50mm]{pic6.jpg}
+      \includegraphics<7>[width=50mm]{pic7.jpg}
+      \end{column}
+   \end{columns}
+\end{frame}
+  
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Odkrivanje tabele po vrsticah}
+      \begin{tabular}{c|c c c c}
+      Oznaka & A & B & C & D \\ \hline
+      X & 1 & 2 & 3 & 4 \\  \pause
+      Y & 3 & 4 & 5 & 6 \\  \pause
+      Z & 5 & 6 & 7 & 8 
+      \end{tabular}
+   \end{frame}
+
+% -------------------------------------------------------------------
+
+   \begin{frame}{Odkrivanje tabele po stolpcih}
+      \begin{tabular}{c|>{\onslide<2->}c >{\onslide<3->}c >{\onslide<4->} c >{\onslide<5->}c<{\onslide}}
+       Oznaka & A & B & C & D \\ \hline
+       X & 1 & 2 & 3 & 4 \\  
+       Y & 3 & 4 & 5 & 6 \\  
+       Z & 5 & 6 & 7 & 8  
+         \end{tabular}
+      \end{frame}
+% ===================================================================
+
+\section{Razno}
+
+% -------------------------------------------------------------------
+\begin{frame}
+\begin{tikzpicture}
+   \onslide<2->
+   \begin{scope}[color=black!20]
+      \fill (0, 4) circle[x radius=2, y radius=1];
+      \fill (0, 4) circle[x radius=2, y radius=1];
+   \end{scope}
+
+   \draw[line width=1št, dashed] (2, 0) arc[start angle=0, delta angle=180, x radius=2, y radius= 1];
+\onslide
+   \begin{scope}[line width=2pt]
+   \draw (0, 4) circle[x radius=2, y radius=1];
+   \draw (2, 0) arc[start angle=0, delta angle=-180, x radius=2, y radius= 1];
+   \draw (2 , 0)--(2 , 4);
+   \draw (-2 , 0)--(-2 , 4);
+   \end{scope}
+\onslide<3->
+   \node at (2.3,2) {$h$};
+   
+\end{tikzpicture}
+\end{frame}
+% ===================================================================
+
+\end{document}
