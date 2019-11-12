@@ -1,5 +1,5 @@
 \babel@toc {slovene}{}
-\beamer@sectionintoc {1}{Razporeditev vsebine}{2}{0}{1}
-\beamer@sectionintoc {2}{Matemati\IeC {\v c}ne trditve}{6}{0}{2}
-\beamer@sectionintoc {3}{Postopno odkrivanje vsebine}{9}{0}{3}
-\beamer@sectionintoc {4}{Razno}{31}{0}{4}
+\beamer@sectionintoc {1}{Razporeditev vsebine}{6}{0}{1}
+\beamer@sectionintoc {2}{Matematichne trditve}{10}{0}{2}
+\beamer@sectionintoc {3}{Postopno odkrivanje vsebine}{12}{0}{3}
+\beamer@sectionintoc {4}{Razno}{28}{0}{4}
