@@ -1,0 +1,27 @@
+#zgornja{
+
+    background-color: lightseagreen
+}
+#spodnja{
+
+    background-color: lightseagreen
+}
+.srednja{
+
+    background-color: aquamarine
+}
+body{
+
+    background-image: url("vreme.jpg")
+}
+
+a:hover{
+    color:lightpink;
+    font-style: italic;
+    }
+
+h2{
+
+    color:rgb(68, 50, 117);
+    text-decoration: underline;
+}
