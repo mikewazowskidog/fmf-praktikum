@@ -1,0 +1,31 @@
+body{
+  align-self:center; 
+  background-color: antiquewhite; 
+}
+h1{
+    
+    font-family: "Times New Roman";
+    font-size: 2em;
+    font-style: italic;
+    font-weight: normal;
+}
+a{
+    color: red;
+    text-decoration: none;
+}
+table{
+float:center;
+border-width: 25px;
+border-color: #603000;
+}
+td{
+    width:50px;
+    height:50px;
+    font-family: "Arial Unicode MS";
+    font-size:35px;
+    text-align: center;
+}
+.steven:hover{
+
+
+}
