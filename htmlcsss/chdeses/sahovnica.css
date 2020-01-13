@@ -1,0 +1,44 @@
+body {
+    background-color: antiquewhite;
+    text-align: center
+}
+table {
+    margin: 0 auto;
+    border: 25px solid #603000;
+    background-color: black
+}
+h1 {
+    font-family: 'Times New Roman';
+    font-size: 2em;
+    font-style: italic;
+    font-weight: normal
+}
+a {
+    color: red;
+    text-decoration: none;
+}
+td {
+    width: 50px;
+    height: 50px;
+    font-family: Arial Unicode MS;
+    font-size: 35px
+}
+
+.bela {
+    background-color: #f0c090
+}
+
+.crna {
+    background-color: #804400
+}
+
+.bela:hover {
+    background-color: #887050
+}
+.crna:hover {
+    background-color: #684800
+}
+
+table:hover {
+    cursor: pointer
+}

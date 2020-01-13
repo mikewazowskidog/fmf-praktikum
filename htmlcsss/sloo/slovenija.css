@@ -1,0 +1,50 @@
+body {
+    background-color: lightyellow; 
+    font-family: Verdana;
+}
+h1 {
+    color: blue;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+
+ul {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+ul ul {
+    font-weight: normal;
+    margin-bottom: 5mm;
+    list-style-type: square;
+}
+a {
+    color: blue;
+    text-decoration: none;
+
+}
+a:hover {
+    color: red;
+    font-weight: bold
+}
+
+table {
+    border: none;
+    border-spacing: 0;
+}
+
+td {
+    border: none;
+    padding: 0;
+}
+
+.rumena {
+    background-color: yellow;
+    width: 200px
+}
