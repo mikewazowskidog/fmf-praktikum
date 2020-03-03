@@ -1,47 +1,65 @@
 # =============================================================================
-# Enkratne števke
-# =====================================================================@020025=
+# Primerjanje
+#
+# Pri reševanju nalog ne uporabljajte funkcij kot sta `min` in `max`.
+# =====================================================================@013128=
 # 1. podnaloga
-# Napišite funkcijo `kolikokrat_se_pojavi_stevka(k, n)`, ki prešteje kolikokrat
-# se v številu `n` pojavi števka `k`.
+# Definirajte funkcijo `vecji_element`, ki sprejme seznam in število ter kot
+# rezultat vrne, ali seznam vsebuje število strogo večje od podanega.
 # 
-#     >>> kolikokrat_se_pojavi_stevka(5, 294535)
-#     2
-#     >>> kolikokrat_se_pojavi_stevka(1, 1)
-#     1
-# =============================================================================
-def kolikokrat_se_pojavi_stevka(k, n):
-    if n==0 and k==0:
-        return 1
-    elif n==0 and k!=0:
-        return 0
-    else:
-        if n % 10 == k:
-            return 1 + kolikokrat_se_pojavi_stevka(k, n // 10)
-        else:
-            return kolikokrat_se_pojavi_stevka(k, n // 10)
-    
-        
-    
-# =====================================================================@020026=
-# 2. podnaloga
-# Napišite funkcijo `ali_ima_enkratne_stevke(n)`, ki preveri, ali se v celem
-# številu `n` vsaka števka pojavi kvečjemu enkrat:
-# 
-#     >>> ali_ima_enkratne_stevke(28537)
+#     >>> vecji_element([3, 6, 2], 5)
 #     True
-#     >>> ali_ima_enkratne_stevke(80085)
+#     >>> vecji_element([7, 5, 1], 8)
+#     False
+#     >>> vecji_element([3], 3)
 #     False
 # =============================================================================
-def ali_ima_enkratne_stevke(n):
-    if n==0:
-        return True
-    elif n % 10 !=  :
-        return True and ali_ima_enkratne_stevke(n // 10)
-    else:
+def vecji_element(a, n):
+    if a==[]:
         return False
-
-
+    else:
+        if n<max(a):
+            return True
+        else:
+            return False
+    return vecji_element(a[1:], n)
+         
+# =====================================================================@013129=
+# 2. podnaloga
+# Definirajte funkcijo `prvi_najvecji`, ki kot rezultat vrne `True`, če je prvi
+# element seznama večji ali enak preostalim elementom seznama, in `False`
+# sicer.
+# 
+#     >>> prvi_najvecji([5, 3, 6, 2])
+#     False
+#     >>> prvi_najvecji([8, 7, 5, 1])
+#     True
+# =============================================================================
+def prvi_najvecji(a):
+    if a == []:
+        return True
+    else:
+        return a[0] >= a[-1] and prvi_najvecji(a[0:len(a)-1])
+# =====================================================================@013132=
+# 3. podnaloga
+# Definirajte funkcijo `vsi_vecji(sez1, sez2)`, ki sprejme dva seznama, `sez1`
+# in `sez2`, ter preveri ali je vsak element seznama `sez1` večji ali enak
+# elementom seznama `sez2`.
+# 
+#     >>> vsi_vecji([2, 4], [1, 3])
+#     False
+#     >>> vsi_vecji([5, 8], [1, 2, 4])
+#     True
+# =============================================================================
+def vsi_vecji(a, b):
+    if a == [] or b==[]:
+        return True
+    else:
+        if len(b) > 0:
+            return a[0] >= b[0] and vsi_vecji(a, b[1:])
+        else:
+            return False
+    return vsi_vecji(a[1:], b)
 
 
 
@@ -600,31 +618,51 @@ def _validate_current_file():
     Check.initialize(file_parts)
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNX0:1j6bI0:-W2hZ0a2vAZ1e7kd3ciLaFtQbGA'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoxMzEyOH0:1j98Kk:2z6jqfl0Mxl4Efr6FQr7ea22Yzc'
         try:
-            Check.equal('kolikokrat_se_pojavi_stevka(5, 294535)', 2)
-            Check.equal('kolikokrat_se_pojavi_stevka(1, 1)', 1)
-            Check.equal('kolikokrat_se_pojavi_stevka(3, 33330)', 4)
-            Check.equal('kolikokrat_se_pojavi_stevka(7, 0)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(4, 2)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(0, 0)', 1) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(2, 2943587112223824212)', 7)
+            Check.equal('vecji_element([3, 6, 2], 5)', True)
+            Check.equal('vecji_element([7, 5, 1], 8)', False)
+            Check.equal('vecji_element([3], 3)', False)
+            Check.equal('vecji_element([], 8)', False)
+            
+            import random
+            for i in range(20):
+                x = random.randint(5, 35)
+                l = list(range(random.randint(1, 30)))
+                random.shuffle(l)
+                Check.equal('vecji_element({}, {})'.format(l, x), max(l) > x)
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNn0:1j6bI0:fhEQuaMKgsb4gWveDpSzTO9ZbCU'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoxMzEyOX0:1j98Kk:qCORtQY3SbiTU9g8FLPRZRc0Yd0'
         try:
-            Check.equal('ali_ima_enkratne_stevke(28537)', True)
-            Check.equal('ali_ima_enkratne_stevke(80085)', False)
-            Check.equal('ali_ima_enkratne_stevke(0)', True)
-            Check.equal('ali_ima_enkratne_stevke(123456789)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(3204780)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(111)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(100)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(9872364)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(20837498)', False)
+            Check.equal('prvi_najvecji([])', True)
+            Check.equal('prvi_najvecji([5, 3, 6, 2])', False)
+            Check.equal('prvi_najvecji([8, 7, 5, 1])', True)
+            Check.equal('prvi_najvecji([9, 9])', True)
+            
+            import random
+            for i in range(20):
+                l = list(range(random.randint(1, 20)))
+                random.shuffle(l)
+                Check.equal('prvi_najvecji({})'.format(l), max(l) == l[0])
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoxMzEzMn0:1j98Kk:UdCSFPX80BJyI3AMFi4IE15kNXI'
+        try:
+            Check.equal('vsi_vecji([2, 4], [1, 3])', False)
+            Check.equal('vsi_vecji([5, 8], [1, 2, 4])', True)
+            Check.equal('vsi_vecji([6], [2, 6, 3])', True)
+            Check.equal('vsi_vecji([7, 3, 5], [3])', True)
+            Check.equal('vsi_vecji([6, 5, 4, 3], [2, 1, 0])', True)
+            Check.equal('vsi_vecji([], [])', True)
+            Check.equal('vsi_vecji([0, 1, 2], [])', True)
+            Check.equal('vsi_vecji([], [0, 1, 2])', True)
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
@@ -632,7 +670,7 @@ def _validate_current_file():
     print('Shranjujem rešitve na strežnik... ', end="")
     try:
         url = 'https://www.projekt-tomo.si/api/attempts/submit/'
-        token = 'Token 880288afc98c23c34d98da3310d317ec56217c80'
+        token = 'Token 7a7cff74487ac44f54d2bcd4e5cdf6e3c735541e'
         response = submit_parts(Check.parts, url, token)
     except urllib.error.URLError:
         print('PRI SHRANJEVANJU JE PRIŠLO DO NAPAKE! Poskusite znova.')

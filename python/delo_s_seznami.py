@@ -1,47 +1,88 @@
 # =============================================================================
-# Enkratne števke
-# =====================================================================@020025=
+# Delo s seznami
+# =====================================================================@009769=
 # 1. podnaloga
-# Napišite funkcijo `kolikokrat_se_pojavi_stevka(k, n)`, ki prešteje kolikokrat
-# se v številu `n` pojavi števka `k`.
+# Sestavite funkcijo `razpolovi_seznam`, ki seznam prepolovi na dva podseznama
+# in ju vrne kot par seznamov. V primeru lihe dolžine naj bo dolžina prvega
+# podseznama krajša ali enaka dolžini drugega podseznama.
 # 
-#     >>> kolikokrat_se_pojavi_stevka(5, 294535)
-#     2
-#     >>> kolikokrat_se_pojavi_stevka(1, 1)
-#     1
+#     >>> razpolovi_seznam(["a", "b", "c", "d"])
+#     (["a", "b"], ["c", "d"])
+#     >>> razpolovi_seznam([5, 4, 3, 2, 1])
+#     ([5, 4], [3, 2, 1])
 # =============================================================================
-def kolikokrat_se_pojavi_stevka(k, n):
-    if n==0 and k==0:
-        return 1
-    elif n==0 and k!=0:
-        return 0
-    else:
-        if n % 10 == k:
-            return 1 + kolikokrat_se_pojavi_stevka(k, n // 10)
-        else:
-            return kolikokrat_se_pojavi_stevka(k, n // 10)
+def razpolovi_seznam(a):
+    return a[0:len(a) // 2], a[len(a) // 2 : len(a)]
     
-        
-    
-# =====================================================================@020026=
+# =====================================================================@009770=
 # 2. podnaloga
-# Napišite funkcijo `ali_ima_enkratne_stevke(n)`, ki preveri, ali se v celem
-# številu `n` vsaka števka pojavi kvečjemu enkrat:
+# Sestavite funkcijo `zamenjaj_elementa(sez,i,j)`, ki iz seznama `sez` sestavi
+# nov seznam, v katerem sta elementa na mestih `i` in `j` zamenjana med sabo.
+# Če kateri od indeksov `i` in `j` ne ustrezata nobenemu elementu, naj funkcija
+# vrne kar seznam `sez`.
 # 
-#     >>> ali_ima_enkratne_stevke(28537)
-#     True
-#     >>> ali_ima_enkratne_stevke(80085)
-#     False
+#     >>> zamenjaj_elementa([1, 2, 3, 4], 1, 2)
+#     [1, 3, 2, 4]
+#     >>> zamenjaj_elementa([1, 2, 3, 4], 3, 1)
+#     [1, 4, 3, 2]
+#     >>> zamenjaj_elementa([1, 2, 3, 4], 1, 2017)
+#     [1, 2, 3, 4]
 # =============================================================================
-def ali_ima_enkratne_stevke(n):
-    if n==0:
-        return True
-    elif n % 10 !=  :
-        return True and ali_ima_enkratne_stevke(n // 10)
+def zamenjaj_elementa(a, i, j):
+    if i>len(a) or j>len(a) or j == i:
+        return a
     else:
-        return False
+        k = a[i]
+        a[i]=a[j]
+        a[j]=k
+        return a  
+    
+# =====================================================================@009771=
+# 3. podnaloga
+# Sestavite funkcijo `porezani_podseznami`, ki sprejme seznam in zgradi nov
+# seznam podseznamov, ki jih pridobimo tako, da podanemu seznamu po vrsti
+# odstranjujemo začetne elemente.
+# 
+#     >>> porezani_podseznami([1, 2, 3, 4])
+#     [[1, 2, 3, 4], [2, 3, 4], [3, 4], [4], []]
+# =============================================================================
+def porezani_podseznami(a):
+    if len(a)==0:
+        return [[]]
+    else:
+        return [a] + porezani_podseznami(a[1:])
 
+# =====================================================================@009812=
+# 4. podnaloga
+# Sestavite funkcijo `najvecji_element`, ki vrne največji element seznama. Če
+# je seznam prazen, naj funkcija vrne `None`.
+# 
+#     >>> najvecji_element([2, 4, 3, 1])
+#     4
+#     >>> najvecji_element([1, 4, 5, 5, 2, -10])
+#     5
+# =============================================================================
+def najvecji_element(a):
+    if len(a)==0:
+        return None
+    else:
+        return max(a)
+# =====================================================================@020116=
+# 5. podnaloga
+# Sestavite funkcijo `zdruzi_sezname`, ki zdruzi seznam seznamov v en seznam,
+# ki vsebuje vse elemente seznamov v podanem seznamu seznamov.
+# 
+#     >>> zdruzi_sezname([[1], [2, 3], [4, 5, 6]])
+#     [1, 2, 3, 4, 5, 6]
+#     >>> zdruzi_sezname([[], [0], [], [0], [], [7], []])
+#     [0, 0, 7]
+# =============================================================================
 
+def zdruzi_sezname(a_seznamov):
+    if a_seznamov == []:
+        return []
+    else: 
+        return a_seznamov[0] + zdruzi_sezname(a_seznamov[1:])
 
 
 
@@ -600,31 +641,69 @@ def _validate_current_file():
     Check.initialize(file_parts)
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNX0:1j6bI0:-W2hZ0a2vAZ1e7kd3ciLaFtQbGA'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5NzY5fQ:1j97kk:XhSbG1-36j9Xch_1dAPPYYGz-Yc'
         try:
-            Check.equal('kolikokrat_se_pojavi_stevka(5, 294535)', 2)
-            Check.equal('kolikokrat_se_pojavi_stevka(1, 1)', 1)
-            Check.equal('kolikokrat_se_pojavi_stevka(3, 33330)', 4)
-            Check.equal('kolikokrat_se_pojavi_stevka(7, 0)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(4, 2)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(0, 0)', 1) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(2, 2943587112223824212)', 7)
+            Check.equal('razpolovi_seznam(["a", "b", "c", "d"])', (["a", "b"], ["c", "d"]))
+            Check.equal('razpolovi_seznam([1, 2])', ([1], [2]))
+            Check.equal('razpolovi_seznam([5, 4, 3, 2, 1])', ([5, 4], [3, 2, 1]))
+            Check.equal('razpolovi_seznam(["a", "b", "c"])', (["a"], ["b", "c"]))
+            Check.equal('razpolovi_seznam([])', ([], [])) and \
+                Check.equal('razpolovi_seznam([[], [[]], [[[]]]])', ([[]], [[[]], [[[]]]]))
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNn0:1j6bI0:fhEQuaMKgsb4gWveDpSzTO9ZbCU'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5NzcwfQ:1j97kk:Ugaj86jwNmeBDAxH6zovswLs8zQ'
         try:
-            Check.equal('ali_ima_enkratne_stevke(28537)', True)
-            Check.equal('ali_ima_enkratne_stevke(80085)', False)
-            Check.equal('ali_ima_enkratne_stevke(0)', True)
-            Check.equal('ali_ima_enkratne_stevke(123456789)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(3204780)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(111)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(100)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(9872364)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(20837498)', False)
+            Check.equal('zamenjaj_elementa([1, 2, 3, 4], 1, 2)', [1, 3, 2, 4])
+            Check.equal('zamenjaj_elementa([1, 2, 3, 4], 3, 1)', [1, 4, 3, 2])
+            Check.equal('zamenjaj_elementa([1, 2, 3, 4], 1, 2017)', [1, 2, 3, 4])
+            Check.equal('zamenjaj_elementa([1, 2, 3, 4], 2, 1)', [1, 3, 2, 4])
+            Check.equal('zamenjaj_elementa([1, 2, 3, 4], 2017, 1)', [1, 2, 3, 4]) and \
+                Check.equal('zamenjaj_elementa([1, 2, 3, 4], 2, 2)', [1, 2, 3, 4]) and \
+                Check.equal('zamenjaj_elementa([], 0, 1)', []) and \
+                Check.equal('zamenjaj_elementa([1], 0, 0)', [1])
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5NzcxfQ:1j97kk:U8tlM2n5-toAV2zzLpmefdeGoN8'
+        try:
+            Check.equal('porezani_podseznami([])', [[]])
+            Check.equal('porezani_podseznami([1, 2])', [[1, 2], [2], []])
+            Check.equal('porezani_podseznami([1, 2, 3, 4])', [[1, 2, 3, 4], [2, 3, 4], [3, 4], [4], []])
+            Check.equal('porezani_podseznami([1, 1, 1])', [[1, 1, 1], [1, 1], [1], []])
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5ODEyfQ:1j97kk:PpkX1deEM0MhUFwTf0sGM4rIE2M'
+        try:
+            Check.equal('najvecji_element([])', None)
+            Check.equal('najvecji_element([2, 4, 3, 1])', 4)
+            Check.equal('najvecji_element([1, 4, 5, 5, 2, -10])', 5)
+            Check.equal('najvecji_element([4, 3, 1, 6, 2])', 6)
+            
+            import random
+            for i in range(20):
+                l = list(range(random.randint(1, 30)))
+                random.shuffle(l)
+                Check.equal('najvecji_element({})'.format(l), max(l))
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoyMDExNn0:1j97kk:7gEn52ricNCp6Zgm7Le49PuOxqE'
+        try:
+            Check.equal('zdruzi_sezname([[1], [2, 3], [4, 5, 6]])', [1, 2, 3, 4, 5, 6])
+            Check.equal('zdruzi_sezname([[], [0], [], [0], [], [7], []])', [0, 0, 7])
+            Check.equal('zdruzi_sezname([[], []])', [])
+            Check.equal('zdruzi_sezname([[1, 2, 3]])', [1, 2, 3])
+            Check.equal('zdruzi_sezname([[]])', [])
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
@@ -632,7 +711,7 @@ def _validate_current_file():
     print('Shranjujem rešitve na strežnik... ', end="")
     try:
         url = 'https://www.projekt-tomo.si/api/attempts/submit/'
-        token = 'Token 880288afc98c23c34d98da3310d317ec56217c80'
+        token = 'Token 7a7cff74487ac44f54d2bcd4e5cdf6e3c735541e'
         response = submit_parts(Check.parts, url, token)
     except urllib.error.URLError:
         print('PRI SHRANJEVANJU JE PRIŠLO DO NAPAKE! Poskusite znova.')

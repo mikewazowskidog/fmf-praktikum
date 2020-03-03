@@ -1,49 +1,56 @@
 # =============================================================================
-# Enkratne števke
-# =====================================================================@020025=
+# Ogrevanje
+# =====================================================================@020111=
 # 1. podnaloga
-# Napišite funkcijo `kolikokrat_se_pojavi_stevka(k, n)`, ki prešteje kolikokrat
-# se v številu `n` pojavi števka `k`.
+# Sestavite funkcijo `daljsi`, ki sprejme dva niza in vrne daljšega od obeh. Če
+# sta niza enako dolga, naj funkcija vrne prvega.
 # 
-#     >>> kolikokrat_se_pojavi_stevka(5, 294535)
-#     2
-#     >>> kolikokrat_se_pojavi_stevka(1, 1)
-#     1
+#      >>> daljsi('aaa', 'aba')
+#      'aaa'
+#      >>> daljsi('Uvod v programiranje', 'Računalniški praktikum')
+#      'Računalniški praktikum'
 # =============================================================================
-def kolikokrat_se_pojavi_stevka(k, n):
-    if n==0 and k==0:
-        return 1
-    elif n==0 and k!=0:
-        return 0
+def daljsi(a, b):
+    if len(a)>=len(b):
+        return a
     else:
-        if n % 10 == k:
-            return 1 + kolikokrat_se_pojavi_stevka(k, n // 10)
-        else:
-            return kolikokrat_se_pojavi_stevka(k, n // 10)
-    
-        
-    
-# =====================================================================@020026=
+        return b
+# =====================================================================@020112=
 # 2. podnaloga
-# Napišite funkcijo `ali_ima_enkratne_stevke(n)`, ki preveri, ali se v celem
-# številu `n` vsaka števka pojavi kvečjemu enkrat:
+# Sestavite funkcijo `zamenjaj_crki`, ki sprejme dva niza in jima zamenja črki
+# na drugem mestu (če obstajata). Funkcija naj vrne par novih nizov.
 # 
-#     >>> ali_ima_enkratne_stevke(28537)
-#     True
-#     >>> ali_ima_enkratne_stevke(80085)
-#     False
+#      >>> zamenjaj_crki('Žiga', 'Anja')
+#      ('Žnga', 'Aija')
+#      >>> zamenjaj_crki('a', 'b')
+#      ('a', 'b')
+#      >>> zamenjaj_crki('krt', 'pot')
+#      ('kot', 'prt')
+#      >>> zamenjaj_crki('jaški', 'morija')
+#      ('joški', 'marija')
 # =============================================================================
-def ali_ima_enkratne_stevke(n):
-    if n==0:
-        return True
-    elif n % 10 !=  :
-        return True and ali_ima_enkratne_stevke(n // 10)
+def zamenjaj_crki(a, b):
+    if len(a) <=1 or len(b) <=1:
+        return (a, b)
     else:
-        return False
-
-
-
-
+        return (a[0] + b[1] + a[2:], b[0] + a[1] + b[2:])
+# =====================================================================@020113=
+# 3. podnaloga
+# Sestavite funkcijo `vrini`, ki sprejme dva niza in med vsaki dve črki prvega
+# niza vstavi črko iz drugega niza.
+# 
+#      >>> vrini('aaa', 'bcdefghij')
+#      'abaca'
+#      >>> vrini('krt', 'aa')
+#      'karat'
+#      >>> vrini('kokodak', 'čmrlj')
+#      'kčomkroldjak'
+# =============================================================================
+def vrini(a, b):
+    if len(a) <= 1 or len(b) == 0:
+        return a
+    else:
+        return a[0] + b[0] + vrini( a[1:], b[1:])
 
 
 
@@ -600,31 +607,38 @@ def _validate_current_file():
     Check.initialize(file_parts)
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNX0:1j6bI0:-W2hZ0a2vAZ1e7kd3ciLaFtQbGA'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoyMDExMX0:1j97M7:xfIqRLrLuMsuZAq8TbYKXI_4HrQ'
         try:
-            Check.equal('kolikokrat_se_pojavi_stevka(5, 294535)', 2)
-            Check.equal('kolikokrat_se_pojavi_stevka(1, 1)', 1)
-            Check.equal('kolikokrat_se_pojavi_stevka(3, 33330)', 4)
-            Check.equal('kolikokrat_se_pojavi_stevka(7, 0)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(4, 2)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(0, 0)', 1) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(2, 2943587112223824212)', 7)
+            Check.equal('daljsi("aaa", "aba")', 'aaa')
+            Check.equal('daljsi("Uvod v programiranje", "Računalniški praktikum")'
+                        , 'Računalniški praktikum')
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNn0:1j6bI0:fhEQuaMKgsb4gWveDpSzTO9ZbCU'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoyMDExMn0:1j97M7:TJgDyFJDz3DVe_aU7OLmU1VpBeo'
         try:
-            Check.equal('ali_ima_enkratne_stevke(28537)', True)
-            Check.equal('ali_ima_enkratne_stevke(80085)', False)
-            Check.equal('ali_ima_enkratne_stevke(0)', True)
-            Check.equal('ali_ima_enkratne_stevke(123456789)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(3204780)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(111)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(100)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(9872364)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(20837498)', False)
+            Check.equal('zamenjaj_crki("Žiga", "Anja")', ('Žnga', 'Aija'))
+            Check.equal('zamenjaj_crki("a", "b")', ('a', 'b'))
+            Check.equal('zamenjaj_crki("krt", "pot")', ('kot', 'prt'))
+            Check.equal('zamenjaj_crki("jaški", "morija")', ('joški', 'marija'))
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0IjoyMDExM30:1j97M7:kPcnKDm30N2ykXn9tAIhEb-LyKE'
+        try:
+            Check.equal('vrini("aaa", "bcdefghij")', 'abaca')
+            Check.equal('vrini("krt", "aa")', 'karat')
+            Check.equal('vrini("kokodak", "čmrlj")', 'kčomkroldjak')
+            
+            for i in range(10):
+                for j in range(12):
+                    a = "a" * i
+                    b = "b" * j
+                    Check.secret(vrini(a, b))
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
@@ -632,7 +646,7 @@ def _validate_current_file():
     print('Shranjujem rešitve na strežnik... ', end="")
     try:
         url = 'https://www.projekt-tomo.si/api/attempts/submit/'
-        token = 'Token 880288afc98c23c34d98da3310d317ec56217c80'
+        token = 'Token 7a7cff74487ac44f54d2bcd4e5cdf6e3c735541e'
         response = submit_parts(Check.parts, url, token)
     except urllib.error.URLError:
         print('PRI SHRANJEVANJU JE PRIŠLO DO NAPAKE! Poskusite znova.')

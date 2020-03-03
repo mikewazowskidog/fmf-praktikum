@@ -1,45 +1,42 @@
 # =============================================================================
-# Enkratne števke
-# =====================================================================@020025=
+# Praštevila
+# =====================================================================@009809=
 # 1. podnaloga
-# Napišite funkcijo `kolikokrat_se_pojavi_stevka(k, n)`, ki prešteje kolikokrat
-# se v številu `n` pojavi števka `k`.
+# Definirajte funkcijo `je_deljivo_s_katerim_od(n, seznam)`, ki vrne `True`
+# natanko tedaj, ko je število `n` deljivo z vsaj kakšnim številom iz seznama
+# števil `seznam`.
 # 
-#     >>> kolikokrat_se_pojavi_stevka(5, 294535)
-#     2
-#     >>> kolikokrat_se_pojavi_stevka(1, 1)
-#     1
-# =============================================================================
-def kolikokrat_se_pojavi_stevka(k, n):
-    if n==0 and k==0:
-        return 1
-    elif n==0 and k!=0:
-        return 0
-    else:
-        if n % 10 == k:
-            return 1 + kolikokrat_se_pojavi_stevka(k, n // 10)
-        else:
-            return kolikokrat_se_pojavi_stevka(k, n // 10)
-    
-        
-    
-# =====================================================================@020026=
-# 2. podnaloga
-# Napišite funkcijo `ali_ima_enkratne_stevke(n)`, ki preveri, ali se v celem
-# številu `n` vsaka števka pojavi kvečjemu enkrat:
-# 
-#     >>> ali_ima_enkratne_stevke(28537)
+#     >>> je_deljivo_s_katerim_od(20, [3, 4, 6])
 #     True
-#     >>> ali_ima_enkratne_stevke(80085)
-#     False
 # =============================================================================
-def ali_ima_enkratne_stevke(n):
-    if n==0:
-        return True
-    elif n % 10 !=  :
-        return True and ali_ima_enkratne_stevke(n // 10)
-    else:
+def je_deljivo_s_katerim_od(n, seznam):
+    if seznam == [] :
         return False
+    else:
+        return n % seznam[0] == 0 or je_deljivo_s_katerim_od(n, seznam[1:])
+# =====================================================================@009810=
+# 2. podnaloga
+# Definirajte funkcijo `prastevila_do`, ki vrne seznam vseh praštevil, ki so
+# manjša ali enaka podanemu številu.
+# 
+#     >>> prastevila_do(10)
+#     [2, 3, 5, 7]
+# =============================================================================
+def prastevila_do(n):
+    if n < 2:
+        return []
+    elif n == 2:
+        return n
+    else:
+            if pra <= n:
+            sez = sez + [pra]
+    return 
+# rekurzija z n-1
+
+# =====================================================================@009811=
+# 3. podnaloga
+# Definirajte funkcijo `je_prastevilo`, ki vrne ali je število praštevilo.
+# =============================================================================
 
 
 
@@ -600,31 +597,44 @@ def _validate_current_file():
     Check.initialize(file_parts)
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNX0:1j6bI0:-W2hZ0a2vAZ1e7kd3ciLaFtQbGA'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5ODA5fQ:1j996q:cbf4jQmiKb_jNc5ucUECAHl_750'
         try:
-            Check.equal('kolikokrat_se_pojavi_stevka(5, 294535)', 2)
-            Check.equal('kolikokrat_se_pojavi_stevka(1, 1)', 1)
-            Check.equal('kolikokrat_se_pojavi_stevka(3, 33330)', 4)
-            Check.equal('kolikokrat_se_pojavi_stevka(7, 0)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(4, 2)', 0) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(0, 0)', 1) and \
-            Check.equal('kolikokrat_se_pojavi_stevka(2, 2943587112223824212)', 7)
+            Check.equal('je_deljivo_s_katerim_od(20, [3, 4, 6])', True)
+            Check.equal('je_deljivo_s_katerim_od(2, [])', False)
+            Check.equal('je_deljivo_s_katerim_od(2, [1])', True)
+            Check.equal('je_deljivo_s_katerim_od(2, [2])', True)
+            Check.equal('je_deljivo_s_katerim_od(10, [2])', True) and \
+                Check.equal('je_deljivo_s_katerim_od(10, [5])', True) and \
+                Check.equal('je_deljivo_s_katerim_od(10, [3])', False) and \
+                Check.equal('je_deljivo_s_katerim_od(20, [4])', True) and \
+                Check.equal('je_deljivo_s_katerim_od(20, [2, 4, 20])', True)
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
 
     if Check.part():
-        Check.current_part['token'] = 'eyJ1c2VyIjo1MzU1LCJwYXJ0IjoyMDAyNn0:1j6bI0:fhEQuaMKgsb4gWveDpSzTO9ZbCU'
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5ODEwfQ:1j996q:G7Jt3QEC30qDyRRQexJbg7feOok'
         try:
-            Check.equal('ali_ima_enkratne_stevke(28537)', True)
-            Check.equal('ali_ima_enkratne_stevke(80085)', False)
-            Check.equal('ali_ima_enkratne_stevke(0)', True)
-            Check.equal('ali_ima_enkratne_stevke(123456789)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(3204780)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(111)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(100)', False) and \
-            Check.equal('ali_ima_enkratne_stevke(9872364)', True) and \
-            Check.equal('ali_ima_enkratne_stevke(20837498)', False)
+            Check.equal('prastevila_do(1)', [])
+            Check.equal('prastevila_do(2)', [2])
+            Check.equal('prastevila_do(10)', [2, 3, 5, 7])
+            Check.equal('prastevila_do(20)', [2, 3, 5, 7, 11, 13, 17, 19])
+            Check.equal('prastevila_do(23)', [2, 3, 5, 7, 11, 13, 17, 19, 23])
+        except:
+            Check.error("Testi sprožijo izjemo\n  {0}",
+                        "\n  ".join(traceback.format_exc().split("\n"))[:-2])
+
+    if Check.part():
+        Check.current_part['token'] = 'eyJ1c2VyIjo1MjYzLCJwYXJ0Ijo5ODExfQ:1j996q:ZOlPk7tLWlnVRTa1j5YNm8npb5E'
+        try:
+            Check.equal('je_prastevilo(1)', False)
+            Check.equal('je_prastevilo(2)', True)
+            Check.equal('je_prastevilo(3)', True)
+            Check.equal('je_prastevilo(4)', False)
+            Check.equal('je_prastevilo(5)', True)
+            Check.equal('je_prastevilo(16)', False) and \
+                Check.equal('je_prastevilo(19)', True) and \
+                Check.equal('je_prastevilo(21)', False)
         except:
             Check.error("Testi sprožijo izjemo\n  {0}",
                         "\n  ".join(traceback.format_exc().split("\n"))[:-2])
@@ -632,7 +642,7 @@ def _validate_current_file():
     print('Shranjujem rešitve na strežnik... ', end="")
     try:
         url = 'https://www.projekt-tomo.si/api/attempts/submit/'
-        token = 'Token 880288afc98c23c34d98da3310d317ec56217c80'
+        token = 'Token 7a7cff74487ac44f54d2bcd4e5cdf6e3c735541e'
         response = submit_parts(Check.parts, url, token)
     except urllib.error.URLError:
         print('PRI SHRANJEVANJU JE PRIŠLO DO NAPAKE! Poskusite znova.')
